@@ -38,20 +38,21 @@
         </div>
 
         <h2 translate>Latest Transactions</h2>
-
         <table class="table table-hover table-striped" style="table-layout: fixed;">
           <thead>
             <tr>
               <th>Hash</th>
+              <th class="text-right">Reward Claimed</th>
               <th class="text-right" translate>Value Out</th>
             </tr>
           </thead>
           <tbody>
           <tr data-ng-show="!txs.length"><td colspan="3" translate>Waiting for transactions...</td></tr>
-          <tr class="fader" data-ng-repeat='tx in txs'>
+          <tr class="fader" data-ng-repeat='tx in txs'>           
             <td>
               <a class="ellipsis" href="tx/{{tx.txid}}">{{tx.txid}}</a>
             </td>
+            <td class="text-right"><span >{{tx.rewardClaimed.toFixed(4)}}</span></td>
             <td class="text-right"><span class="ellipsis">{{$root.currency.getConvertion(tx.valueOut)}}</span></td>
           </tr>
           </tbody>
